@@ -1,8 +1,23 @@
 import 'package:ejemplo_login/screens/screens.dart';
 import 'package:ejemplo_login/theme/app_theme.dart';
+import 'package:ejemplo_login/shared_preferences/preferencias.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
+//Las preferencias las cargo en el main, ya que este sí puede ser asíncrono,
+// mientras que dentro de build no puedo cargarlo, ya que build es síncrono
+
+void main() async{
+
+  /*
+  * Antes de que una aplicación Flutter pueda ejecutar su código, es necesario que los enlaces de Flutter estén inicializados. Esto implica la configuración de la infraestructura necesaria para que Flutter funcione, incluyendo la comunicación con el motor gráfico subyacente.*/
+  WidgetsFlutterBinding.ensureInitialized()
+  //llamo la inicialización de preferences
+  await Preferences.init();
+
+  runApp(MyApp());
+}
+
 
 class MyApp extends StatelessWidget {
   /** Key es un identificador único para un widget. Especificar una clave (key)
@@ -12,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
