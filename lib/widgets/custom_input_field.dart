@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:ejemplo_login/shared_preferences/preferencias.dart';
 class CustomInputField extends StatelessWidget {
 
   final String? hintText;
@@ -36,7 +36,10 @@ class CustomInputField extends StatelessWidget {
         textCapitalization: TextCapitalization.words,
         keyboardType: keyboardType,
         obscureText: obscureText,
-        onChanged: ( value ) => formValues[formProperty] = value,
+        onChanged: ( value ) =>
+        {
+          formValues[formProperty] = value
+        },
         validator: (value) {
           if ( value == null ) return 'Este campo es requerido';
           return value.length < 3 ? 'Mínimo de 3 letras' : null;

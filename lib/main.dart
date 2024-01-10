@@ -11,7 +11,7 @@ void main() async{
 
   /*
   * Antes de que una aplicación Flutter pueda ejecutar su código, es necesario que los enlaces de Flutter estén inicializados. Esto implica la configuración de la infraestructura necesaria para que Flutter funcione, incluyendo la comunicación con el motor gráfico subyacente.*/
-  WidgetsFlutterBinding.ensureInitialized()
+  WidgetsFlutterBinding.ensureInitialized();
   //llamo la inicialización de preferences
   await Preferences.init();
 
